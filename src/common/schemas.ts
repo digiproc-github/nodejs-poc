@@ -1,4 +1,5 @@
 import { Type } from '@sinclair/typebox';
+import { CurrencyCode } from './enum/currency-code.enum.js';
 
 /**
  * @description input schemas are common schemas that are being used to validate input data
@@ -12,24 +13,6 @@ export const NotEmptyStringInputSchema = Type.String({
 });
 
 export const DateInputSchema = Type.String({ format: 'date-time' });
-
-export const EmailInputSchema = Type.String({
-  ...StringInputSchema,
-  format: 'email'
-});
-
-/** @todo enforce complexity and increase min length */
-export const PasswordInputSchema = Type.String({
-  ...StringInputSchema,
-  minLength: 6
-});
-
-/** @todo enforce timezone is into the supported list by either Intl or the library we use */
-export const TimezoneInputSchema = Type.String({
-  ...NotEmptyStringInputSchema
-});
-
-export const UriInputSchema = Type.String({ format: 'uri' });
 
 /** @todo make our IDs consistent using cuid2, then validate the pattern */
 export const IdInputSchema = NotEmptyStringInputSchema;
@@ -48,3 +31,5 @@ export const EmailSchema = Type.String({ format: 'email' });
 export const DateSchema = Type.String({ format: 'date-time' });
 
 export const UriSchema = Type.String({ format: 'uri' });
+
+export const CurrencyCodeSchema = Type.Enum(CurrencyCode);
