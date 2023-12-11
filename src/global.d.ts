@@ -10,6 +10,9 @@ declare global {
 
       // http
       PORT: string | undefined
+
+      // wordpress
+      WORDPRESS_PREFIX_URL: string | undefined
     }
   }
 

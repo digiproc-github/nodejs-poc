@@ -3,6 +3,7 @@ import { getLogger } from './log/logger.module.js';
 import { getFastify } from './fastify/fastify.module.js';
 import { getHealthModule } from './health/health.module.js';
 import { getCustomerModule } from './customer/customer.module.js';
+import { getWordpressModule } from './wordpress/wordpress.module.js';
 
 const logger = getLogger();
 
@@ -15,7 +16,8 @@ process.on('uncaughtException', (err) => {
 try {
   logger.info('initializing modules and resolving dependencies');
   const healthModule = getHealthModule(logger);
-  const customerModule = getCustomerModule(logger);
+  const { Client: wordpressClient } = getWordpressModule();
+  const customerModule = getCustomerModule(wordpressClient, logger);
 
   const server = new Server(
     getFastify(),
