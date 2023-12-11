@@ -1,9 +1,10 @@
 import { type Static, Type } from '@sinclair/typebox';
-import { BaseResponseDtoSchema } from 'src/common/dtos/response.dto.js';
+import { BaseResponseDtoSchema, ResponseType } from 'src/common/dtos/response.dto.js';
 import { CurrencyCodeSchema, DateSchema, StringSchema, UriSchema } from 'src/common/schemas.js';
 
 export const CustomerDtoSchema = Type.Object({
   ...BaseResponseDtoSchema.properties,
+  type: Type.Literal(ResponseType.CUSTOMER),
   attributes: Type.Object({
     fullName: StringSchema,
     businessRegistration: Type.Optional(StringSchema),
