@@ -29,7 +29,7 @@ describe('CustomerController', () => {
       });
       const reply = getReplyMock<GetByIdRoute>();
 
-      await controller.getCustomer(req, reply);
+      await controller.getById(req, reply);
 
       expect(service.getById).toHaveBeenCalledWith(req.params.id);
       expect(reply.send).toHaveBeenCalledWith(dto);
