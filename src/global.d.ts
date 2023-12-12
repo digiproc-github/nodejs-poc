@@ -11,6 +11,13 @@ declare global {
       // http
       PORT: string | undefined
 
+      // database
+      POSTGRES_HOST: string | undefined
+      POSTGRES_PORT: string | undefined
+      POSTGRES_USERNAME: string | undefined
+      POSTGRES_PASSWORD: string | undefined
+      POSTGRES_DATABASE: string | undefined
+
       // wordpress
       WORDPRESS_PREFIX_URL: string | undefined
     }

@@ -1,70 +1,74 @@
 {
-  "name": "nodejs-poc",
-  "version": "0.0.1",
-  "type": "module",
-  "description": "DigiProc node.js restful APIs",
-  "exports": "./build/index.js",
-  "engines": {
-    "node": ">=20"
-  },
-  "scripts": {
-    "prepare": "husky install",
-    "build": "rimraf build/ && tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
-    "prestart": "npm run build",
-    "start": "node build/index.js",
-    "dev": "tsx watch --ignore **/*.test.ts --ignore test/**/*.ts src/index.ts",
-    "lint": "eslint **/*.ts",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "update-dep": "npm-check -u"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com:digiproc-github/nodejs-poc.git"
-  },
-  "keywords": [
-    "digiproc",
-    "api",
-    "backend"
-  ],
-  "author": "f.gatti@digiproc.com",
-  "license": "UNLICENSED",
-  "bugs": {
-    "url": "https://github.com/digiproc-github/nodejs-poc.git/issues"
-  },
-  "homepage": "https://github.com/digiproc-github/nodejs-poc.git#readme",
-  "devDependencies": {
-    "@types/node": "20.10.4",
-    "@typescript-eslint/eslint-plugin": "6.13.2",
-    "@typescript-eslint/parser": "6.13.2",
-    "eslint": "8.55.0",
-    "eslint-config-standard-with-typescript": "42.0.0",
-    "eslint-plugin-import": "2.29.0",
-    "eslint-plugin-n": "16.4.0",
-    "eslint-plugin-promise": "6.1.1",
-    "husky": "8.0.3",
-    "lint-staged": "15.2.0",
-    "npm-check": "6.0.1",
-    "pino-pretty": "10.2.3",
-    "rimraf": "5.0.5",
-    "tsc-alias": "1.8.8",
-    "tsx": "4.6.2",
-    "typescript": "5.3.3",
-    "vite-tsconfig-paths": "4.2.2",
-    "vitest": "1.0.4"
-  },
-  "lint-staged": {
-    "*.{js,ts}": [
-      "eslint"
-    ]
-  },
-  "dependencies": {
-    "@sinclair/typebox": "0.31.28",
-    "ajv": "8.12.0",
-    "ajv-formats": "2.1.1",
-    "fastify": "4.24.3",
-    "got": "14.0.0",
-    "hyperid": "3.1.1",
-    "pino": "8.16.2"
-  }
+   "name": "nodejs-poc",
+   "version": "0.0.1",
+   "type": "module",
+   "description": "DigiProc node.js restful APIs",
+   "exports": "./build/index.js",
+   "engines": {
+      "node": ">=20"
+   },
+   "scripts": {
+      "prepare": "husky install",
+      "build": "rimraf build/ && tsc --project tsconfig.build.json && tsc-alias -p tsconfig.build.json",
+      "prestart": "npm run build",
+      "start": "node build/index.js",
+      "dev": "tsx watch --ignore **/*.test.ts --ignore test/**/*.ts src/index.ts",
+      "lint": "eslint **/*.ts",
+      "test": "vitest run",
+      "test:watch": "vitest",
+      "update-dep": "npm-check -u"
+   },
+   "repository": {
+      "type": "git",
+      "url": "git+ssh://git@github.com:digiproc-github/nodejs-poc.git"
+   },
+   "keywords": [
+      "digiproc",
+      "api",
+      "backend"
+   ],
+   "author": "f.gatti@digiproc.com",
+   "license": "UNLICENSED",
+   "bugs": {
+      "url": "https://github.com/digiproc-github/nodejs-poc.git/issues"
+   },
+   "homepage": "https://github.com/digiproc-github/nodejs-poc.git#readme",
+   "devDependencies": {
+      "@types/node": "20.10.4",
+      "@typescript-eslint/eslint-plugin": "6.13.2",
+      "@typescript-eslint/parser": "6.13.2",
+      "eslint": "8.55.0",
+      "eslint-config-standard-with-typescript": "42.0.0",
+      "eslint-plugin-import": "2.29.0",
+      "eslint-plugin-n": "16.4.0",
+      "eslint-plugin-promise": "6.1.1",
+      "husky": "8.0.3",
+      "lint-staged": "15.2.0",
+      "npm-check": "6.0.1",
+      "pino-pretty": "10.2.3",
+      "rimraf": "5.0.5",
+      "ts-node": "10.7.0",
+      "tsc-alias": "1.8.8",
+      "tsx": "4.6.2",
+      "typescript": "5.3.3",
+      "vite-tsconfig-paths": "4.2.2",
+      "vitest": "1.0.4"
+   },
+   "lint-staged": {
+      "*.{js,ts}": [
+         "eslint"
+      ]
+   },
+   "dependencies": {
+      "@sinclair/typebox": "0.31.28",
+      "ajv": "8.12.0",
+      "ajv-formats": "2.1.1",
+      "fastify": "4.24.3",
+      "got": "14.0.0",
+      "hyperid": "3.1.1",
+      "pg": "8.11.3",
+      "pino": "8.16.2",
+      "reflect-metadata": "0.1.14",
+      "typeorm": "0.3.17"
+   }
 }

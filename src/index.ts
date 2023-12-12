@@ -5,6 +5,7 @@ import { getHealthModule } from './health/health.module.js';
 import { getCustomerModule } from './customer/customer.module.js';
 import { getWordpressModule } from './wordpress/wordpress.module.js';
 import { getSupplierModule } from './supplier/supplier.module.js';
+import { getTypeORMModule } from './typeorm/typeorm.module.js';
 
 const logger = getLogger();
 
@@ -15,6 +16,10 @@ process.on('uncaughtException', (err) => {
 });
 
 try {
+  logger.info('initializing TypeORM and DB connection');
+  const dataSource = getTypeORMModule();
+  await dataSource.initialize();
+
   logger.info('initializing modules and resolving dependencies');
   const healthModule = getHealthModule(logger);
   const { Client: wordpressClient } = getWordpressModule();
