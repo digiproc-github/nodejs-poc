@@ -4,6 +4,7 @@ import { getFastify } from './fastify/fastify.module.js';
 import { getHealthModule } from './health/health.module.js';
 import { getCustomerModule } from './customer/customer.module.js';
 import { getWordpressModule } from './wordpress/wordpress.module.js';
+import { getSupplierModule } from './supplier/supplier.module.js';
 
 const logger = getLogger();
 
@@ -18,18 +19,21 @@ try {
   const healthModule = getHealthModule(logger);
   const { Client: wordpressClient } = getWordpressModule();
   const customerModule = getCustomerModule(wordpressClient, logger);
+  const supplierModule = getSupplierModule(logger);
 
   const server = new Server(
     getFastify(),
     [
       ...healthModule.Controllers,
-      ...customerModule.Controllers
+      ...customerModule.Controllers,
+      ...supplierModule.Controllers
     ],
     logger
   );
 
   logger.info('starting the server');
   await server.start();
+  logger.info('server started');
 
   function gracefulShutDown(): void {
     Promise.resolve().then(async () => {

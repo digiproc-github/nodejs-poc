@@ -6,7 +6,7 @@ export enum ErrorStatusCode {
   CONFLICT = 409,
 }
 
-export type ErrorDomain = 'common' | 'customer';
+export type ErrorDomain = 'common' | 'customer' | 'supplier';
 
 /** @description these error codes are publicly available to APIs consumers and have standard format */
 export type ErrorCode = `${ErrorDomain}/${string}`;

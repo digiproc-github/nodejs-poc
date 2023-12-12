@@ -3,6 +3,7 @@ import { type IdParamsDto, IdParamsDtoSchema } from 'src/common/dtos/id-params.d
 import { type Logger } from 'pino';
 import { SupplierDtoSchema } from '../dtos/supplier.dto.js';
 import { type SupplierService } from '../services/supplier.service.js';
+import { SupplierNotFoundError } from '../errors/supplier-not-found.error.js';
 
 interface GetByIdRoute extends Route {
   Params: IdParamsDto

@@ -2,6 +2,7 @@ import { type Logger } from 'pino';
 import { LogAware } from 'src/log/log-aware.js';
 import { type SupplierMapper } from '../mappers/supplier.mapper.js';
 import { type SupplierDto } from '../dtos/supplier.dto.js';
+import { type SupplierRepository } from '../repositories/supplier.repository.js';
 
 export class SupplierService extends LogAware {
   constructor(
@@ -18,6 +19,6 @@ export class SupplierService extends LogAware {
       return null;
     }
 
-    return this.supplierMapper.mapToDto(supplier);
+    return this.supplierMapper.toDto(supplier);
   }
 }
