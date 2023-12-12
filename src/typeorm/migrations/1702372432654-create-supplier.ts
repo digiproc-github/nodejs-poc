@@ -8,7 +8,9 @@ export class CreateSupplier1702372432654 implements MigrationInterface {
         new TableColumn({
           name: 'id',
           type: 'uuid',
-          isPrimary: true
+          isPrimary: true,
+          isGenerated: true,
+          generationStrategy: 'uuid'
         }),
         new TableColumn({
           name: 'name',

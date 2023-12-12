@@ -1,7 +1,7 @@
 import { type Logger } from 'pino';
 import { LogAware } from 'src/log/log-aware.js';
 import { type SupplierMapper } from '../mappers/supplier.mapper.js';
-import { type SupplierDto } from '../dtos/supplier.dto.js';
+import { type CreateSupplierDto, type SupplierDto } from '../dtos/supplier.dto.js';
 import { type SupplierRepository } from '../repositories/supplier.repository.js';
 
 export class SupplierService extends LogAware {
@@ -18,6 +18,13 @@ export class SupplierService extends LogAware {
     if (supplier === null) {
       return null;
     }
+
+    return this.supplierMapper.toDto(supplier);
+  }
+
+  async create(createSupplier: CreateSupplierDto): Promise<SupplierDto> {
+    const creatable = this.supplierMapper.toCreatableEntity(createSupplier);
+    const supplier = await this.supplierRepository.create(creatable);
 
     return this.supplierMapper.toDto(supplier);
   }

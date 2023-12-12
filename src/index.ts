@@ -24,7 +24,7 @@ try {
   const healthModule = getHealthModule(logger);
   const { Client: wordpressClient } = getWordpressModule();
   const customerModule = getCustomerModule(wordpressClient, logger);
-  const supplierModule = getSupplierModule(logger);
+  const supplierModule = getSupplierModule(dataSource, logger);
 
   const server = new Server(
     getFastify(),

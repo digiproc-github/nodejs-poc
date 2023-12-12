@@ -1,16 +1,13 @@
-import { Column, CreateDateColumn, Entity, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { type AbstractEntity } from 'src/common/entities/abstract-entity.js';
+import { AbstractPersistedEntity } from 'src/common/entities/abstract-persisted-entity.js';
+import { Column, Entity } from 'typeorm';
+
+export interface SupplierEntity extends AbstractEntity {
+  name: string
+}
 
 @Entity('supplier')
-export class SupplierEntity {
-  @PrimaryColumn({ type: 'uuid' })
-    id!: string;
-
+export class SupplierPersistedEntity extends AbstractPersistedEntity implements SupplierEntity {
   @Column({ type: 'varchar' })
     name!: string;
-
-  @CreateDateColumn({ type: 'timestamp' })
-    createdAt!: Date;
-
-  @UpdateDateColumn({ type: 'timestamp' })
-    updatedAt!: Date;
 }

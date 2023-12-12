@@ -14,8 +14,7 @@ export const NotEmptyStringInputSchema = Type.String({
 
 export const DateInputSchema = Type.String({ format: 'date-time' });
 
-/** @todo make our IDs consistent using cuid2, then validate the pattern */
-export const IdInputSchema = NotEmptyStringInputSchema;
+export const IdInputSchema = Type.String({ format: 'uuid' });
 
 export const PositiveIntegerSchema = Type.Number({ minimum: 0, multipleOf: 1 });
 
@@ -24,7 +23,7 @@ export const PositiveIntegerSchema = Type.Number({ minimum: 0, multipleOf: 1 });
  */
 export const StringSchema = Type.String();
 
-export const IdSchema = StringSchema;
+export const IdSchema = IdInputSchema;
 
 export const EmailSchema = Type.String({ format: 'email' });
 
