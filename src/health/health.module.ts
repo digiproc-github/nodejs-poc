@@ -3,14 +3,14 @@ import { type Controller } from 'src/server/controller.js';
 import { HealthController } from './controllers/health.controller.js';
 
 export interface HealthModule extends Module {
-  Controllers: Controller[]
+  controllers: Controller[]
 }
 
 export function getHealthModule(
   logger: Logger
 ): HealthModule {
   return {
-    Controllers: [
+    controllers: [
       new HealthController(logger)
     ]
   };

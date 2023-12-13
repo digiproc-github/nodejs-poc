@@ -6,6 +6,8 @@ import { getCustomerModule } from './customer/customer.module.js';
 import { getWordpressModule } from './wordpress/wordpress.module.js';
 import { getSupplierModule } from './supplier/supplier.module.js';
 import { getTypeORMModule } from './typeorm/typeorm.module.js';
+import { getEventBusModule } from './event/event.module.js';
+import { getAdminModule } from './admin/admin.module.js';
 
 const logger = getLogger();
 
@@ -21,17 +23,23 @@ try {
   await dataSource.initialize();
 
   logger.info('initializing modules and resolving dependencies');
+  const { services: { inMemoryEventBus } } = getEventBusModule(logger);
   const healthModule = getHealthModule(logger);
-  const { Client: wordpressClient } = getWordpressModule();
-  const customerModule = getCustomerModule(wordpressClient, logger);
-  const supplierModule = getSupplierModule(dataSource, logger);
+  const { wordPressClient } = getWordpressModule();
+  const { eventHandlers } = getAdminModule(inMemoryEventBus, logger);
+  const customerModule = getCustomerModule(wordPressClient, logger);
+  const supplierModule = getSupplierModule(dataSource, inMemoryEventBus, logger);
+
+  eventHandlers.forEach((eventHandler) => {
+    eventHandler.listen();
+  });
 
   const server = new Server(
     getFastify(),
     [
-      ...healthModule.Controllers,
-      ...customerModule.Controllers,
-      ...supplierModule.Controllers
+      ...healthModule.controllers,
+      ...customerModule.controllers,
+      ...supplierModule.controllers
     ],
     logger
   );

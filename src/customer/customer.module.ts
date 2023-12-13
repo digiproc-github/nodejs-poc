@@ -6,7 +6,7 @@ import { CustomerService } from './services/customer.service.js';
 import { CustomerRepository } from './repositories/customer.repository.js';
 
 export interface CostumerModule extends Module {
-  Controllers: Controller[]
+  controllers: Controller[]
 }
 
 export function getCustomerModule(
@@ -17,7 +17,7 @@ export function getCustomerModule(
   const customerService = new CustomerService(customerRepository, logger);
 
   return {
-    Controllers: [
+    controllers: [
       new CustomerController(customerService, logger)
     ]
   };

@@ -25,8 +25,8 @@ declare global {
 
   interface Module {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Services?: Record<string, InstanceType<any>>
-    Controllers?: Controller[]
+    services?: Record<string, InstanceType<any>>
+    controllers?: Controller[]
   }
 }
 
